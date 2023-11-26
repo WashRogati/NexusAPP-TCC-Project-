@@ -1,28 +1,25 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 
-export default function App() {
+export default function PerfilProfissional() {
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Cabeçalho</Text>
-      </View>
 
       <View style={styles.circle}>
         <Image
-          source={require('./image/nexus.png')} // Substitua pelo caminho correto da sua imagem
+          source={require('./images/fotoperfil1.jpeg')} // Substitua pelo caminho correto da sua imagem
           style={styles.circleImage}
         />
         <Text style={styles.professionalText}>Profissional</Text>
-        <Text style={styles.infoText}>Nome completo</Text>
-        <Text style={styles.infoText}>email@gmail.com</Text>
+        <Text style={styles.infoText}>Pedro Alcântra</Text>
+        <Text style={styles.infoText}>pedroalcantra@gmail.com</Text>
         <Text style={styles.infoText}>Mongaguá, SP</Text>
       </View>
 
       <View style={styles.card}>
         <Text style={styles.cardTitle}>Informações Gerais</Text>
         <Text style={styles.groupTitle}>Instituição de Ensino</Text>
-        <Text style={styles.groupText}>Exemplo Faculdade</Text>
+        <Text style={styles.groupText}>Unisantos</Text>
         <Text style={styles.groupTitle}>Área de Especialização</Text>
         <Text style={styles.groupText}>Neuropsicopedagogia</Text>
         <Text style={styles.groupTitle}>Grau acadêmico</Text>
@@ -105,7 +102,7 @@ const styles = StyleSheet.create({
   button: {
     width: '100%',
     height: 60,
-    backgroundColor: 'blue',
+    backgroundColor: '#001845',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 20,

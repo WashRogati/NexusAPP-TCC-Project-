@@ -3,11 +3,10 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView } fro
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Footer } from '../../components/footer';
 
-export default function App() {
+export default function LoginResponsavel( {navigation} ) {
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity style={styles.backButton}>
-        <Icon name="ios-arrow-back" size={30} color="#000" />
       </TouchableOpacity>
       <Text style={styles.title}>NEXUS</Text>
       <Text style={styles.subtitle}>Login Responsável</Text>
@@ -22,13 +21,13 @@ export default function App() {
         placeholder="Senha"
       />
 
-      <TouchableOpacity style={styles.loginButton}>
+      <TouchableOpacity style={styles.loginButton}  onPress = {() => navigation.navigate('Responsavel')}>
         <Text style={styles.loginButtonText}>Entrar</Text>
       </TouchableOpacity>
 
       <View style={styles.bottomLinks}>
-        <Text>Não possui conta? Cadastre-se</Text>
-        <Text>Esqueceu a senha?</Text>
+      <Text onPress = {() => navigation.navigate('CadastroResponsavel')}>Não possui conta? Cadastre-se</Text>
+        <Text onPress = {() => navigation.navigate('RedefinirSenha')} >Esqueceu a senha?</Text>
       </View>
       <Footer/>
     </SafeAreaView>
@@ -62,12 +61,13 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 12,
+    padding: 10
   },
   loginButton: {
     width: '70%',
     height: 60,
     marginTop: 20,
-    backgroundColor: 'blue',
+    backgroundColor: '#001845',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 12,

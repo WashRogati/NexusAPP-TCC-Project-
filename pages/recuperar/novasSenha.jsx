@@ -1,30 +1,29 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { Card } from 'react-native-paper';
-import { BackButton } from './components/backButton';
-import { MyTheme } from './Theme';
-import { InputP } from './components/input';
+import { BackButton } from '../../components/backButton';
+import { MyTheme } from '../../Theme';
+import { InputP } from '../../components/button';
 
-export default function App() {
+export default function NovaSenha( {navigation }) {
   return (
     <View style={MyTheme.container}>
-       <BackButton/>
       <Text style={styles.title}>NEXUS</Text>
       <Card style={styles.card}>
         
         <Text style={styles.cardTitle}>NOVA SENHA</Text>
 
-       <InputP placeholder="Senha"/>
-       <InputP placeholder="Confirme a Senha"/>
+       <TextInput style={styles.input} placeholder="Senha"/>
+       <TextInput style={styles.input} placeholder="Confirme a Senha"/>
       </Card>
 
       <TouchableOpacity
         style={styles.button}
       >
-        <Text style={styles.buttonText}>Enviar</Text>
+        <Text style={styles.buttonText} onPress={ () => navigation.navigate('Inicio')} >Enviar</Text>
       </TouchableOpacity>
 
-      <Text style={styles.cancelText}>Cancelar</Text>
+      <Text style={styles.cancelText} onPress={ () => navigation.navigate('Inicio')}>Cancelar</Text>
     </View>
   );
 }
@@ -61,11 +60,12 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 12,
+    padding: 10
   },
   button: {
     width: '70%',
     height: 60,
-    backgroundColor: 'blue',
+    backgroundColor: '#001845',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 20,

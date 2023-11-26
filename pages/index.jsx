@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
-import { Footer } from './components/footer';
+import { Footer } from '../components/footer';
 
-const Inicio = () => {
+const Inicio = ( { navigation }) => {
   return (
     <View style={styles.container}>
       <Image
@@ -11,10 +11,10 @@ const Inicio = () => {
       />
       <Text style={styles.welcomeText}>BEM VINDO</Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Profissional')}>
           <Text style={styles.buttonText}>Profissional</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Responsavel')}>
           <Text style={styles.buttonText}>Responsável</Text>
         </TouchableOpacity>
       </View>

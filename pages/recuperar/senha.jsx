@@ -1,13 +1,12 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 import { Card } from 'react-native-paper';
-import { BackButton } from './components/backButton';
-import { MyTheme } from './Theme';
+import { BackButton } from '../../components/backButton';
+import { MyTheme } from '../../Theme';
 
-export default function ReSenha() {
+export default function RedefinirSenha( { navigation }) {
   return (
     <View style={MyTheme.container}>
-       <BackButton/>
       <Text style={styles.title}>NEXUS</Text>
       <Card style={styles.card}>
         
@@ -23,12 +22,12 @@ export default function ReSenha() {
       </Card>
 
       <TouchableOpacity
-        style={styles.button}
+        style={styles.button} onPress={ () => navigation.navigate('NovaSenha')}
       >
-        <Text style={styles.buttonText}>Enviar</Text>
+        <Text style={styles.buttonText} onPress={ () => navigation.navigate('NovaSenha')}>Enviar</Text>
       </TouchableOpacity>
 
-      <Text style={styles.cancelText}>Cancelar</Text>
+      <Text style={styles.cancelText} onPress={ () => navigation.navigate('Inicio')}>Cancelar</Text>
     </View>
   );
 }
@@ -65,11 +64,12 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     borderRadius: 12,
+    padding: 10
   },
   button: {
     width: '70%',
     height: 60,
-    backgroundColor: 'blue',
+    backgroundColor: '#001845',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 20,

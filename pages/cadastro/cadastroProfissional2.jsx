@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, KeyboardAvoidingView, Platform, ScrollView, Button} from 'react-native';
+import { View, Text, StyleSheet, KeyboardAvoidingView, Platform, ScrollView, Button, TouchableOpacity} from 'react-native';
 import { Footer } from '../../components/footer';
 import { InputP } from '../../components/input';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-export default function CadastroResponsavel4( { navigation } ) {
+
+
+export default function CadastroProfissional2( { navigation } ) {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
@@ -12,24 +15,23 @@ export default function CadastroResponsavel4( { navigation } ) {
     >
       <ScrollView>
         <Text style={styles.title}>Cadastre-se</Text>
-        <InputP placeholder="Nome completo" />
-        <InputP placeholder="Email" />
-        <InputP placeholder="Senha" />
-        <InputP placeholder="Confirmar Senha" />
-        <InputP placeholder="Cep" />
-        <InputP placeholder="DD/MM/AA" />
-        <InputP placeholder="Celular" />
-        <InputP placeholder="Cidade" />
-        <InputP placeholder="Bairro" />
-        <InputP placeholder="Rua" />
-        <InputP placeholder="Nº" />
+        <InputP placeholder="CPF" />
+        <InputP placeholder="Código CBO" />
+        <InputP placeholder="Área de Especialização" />
+        <InputP placeholder="Grau Acadêmico" />
+        <InputP placeholder="Instituição de Ensino" />
+        <InputP placeholder="Ano de Conclusão" />
+        <InputP placeholder="Habilidades " />
+        <InputP placeholder="Certificações" />
         <View style={styles.checkboxContainer}>
           <View
           style={styles.checkbox}
           />
           <Text style={styles.checkboxText}>Aceitar termos e condições</Text>
         </View>
-        <Button title="CADASTRAR" style={styles.button}  onPress = {() => navigation.navigate('Responsavel')} />
+        <TouchableOpacity style={styles.button}  onPress = {() => navigation.navigate('CadastroProfissional3')}>
+        <Icon name="angle-right" size={40} color="white"/>
+      </TouchableOpacity>
       </ScrollView>
       <Footer/>
     </KeyboardAvoidingView>
@@ -40,9 +42,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    paddingTop: 50,
-    paddingBottom: 50
+    alignItems: 'center'
   },
   title: {
     fontSize: 24,
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 16,
-    margin: 10
+    margin: 20
   },
   checkbox: {
     width: 20,
@@ -68,9 +68,14 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 80,
-    width: '60%', // Use '60vw' para largura relativa à tela
+    width: 80, // Use '60vw' para largura relativa à tela
     alignSelf: 'center',
-    borderRadius: 12,
+    borderRadius: 50,
+    backgroundColor: '#001845',
+    justifyContent: 'center',
+    textAlign:'center',
+    paddingLeft: 32,
+    marginBottom: 30,
     backgroundColor: '#001845',
   },
 });
