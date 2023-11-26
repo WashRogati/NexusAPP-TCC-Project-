@@ -1,12 +1,16 @@
 import React from 'react';
 import { View,TextInput, StyleSheet, props } from 'react-native';
 
-export const InputP = (props) => {
+export const InputP = ({ onChangeText, value, placeholder, ...props }) => {
     return (
         <View>
             <TextInput
                 style={styles.input}
-                placeholder={props.placeholder}
+                placeholder={placeholder}
+                onChangeText={onChangeText} 
+                value={value}
+                name={props.name}
+                {...props}
             />
         </View>
     );
