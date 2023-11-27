@@ -18,6 +18,10 @@ import CadastroProfissional3 from './pages/cadastro/cadastroProfissional3';
 import CadastroTEA from './pages/cadastro/cadastroTEA';
 import AgendaP from './pages/agenda';
 import { ProfissionalStateProvider } from './context/ProfissionalContext';
+import { Configuracoes } from './pages/configuracoes';
+import PesquisarProfissional from './pages/pesquisarProfissional';
+
+
 
 
 
@@ -30,6 +34,7 @@ const App = () => {
     <ProfissionalStateProvider>
       <NavigationContainer>
         <Stack.Navigator>
+          <Stack.Screen name="PesquisarProfissional" component={PesquisarProfissional} />
           <Stack.Screen name="Inicio" component={Inicio} />
           <Stack.Screen name="Profissional" component={LoginProfissional} />
           <Stack.Screen name="Responsavel" component={LoginResponsavel} />
@@ -44,6 +49,7 @@ const App = () => {
           <Stack.Screen name="CadastroProfissional3" component={CadastroProfissional3} />
           <Stack.Screen name="CadastroTEA" component={CadastroTEA} />
           <Stack.Screen name="Agenda" component={AgendaP} />
+          <Stack.Screen name="Configuracoes" component={Configuracoes} />
         </Stack.Navigator>
       </NavigationContainer>
     </ProfissionalStateProvider>

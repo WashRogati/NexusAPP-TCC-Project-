@@ -8,11 +8,11 @@ import { useStateContext } from '../../context/ProfissionalContext';
 
 
 
-const salvarProfissional = async ( sharedState ) => {
+const salvarResponsavel = async (sharedState) => {
 
   try {
-    const profissional = {
-      nm_profissional: sharedState.nome,
+    const responsavel = {
+      nm_responsavel: sharedState.nome,
       nm_email: sharedState.email,
       nm_senha: sharedState.senha,
       nr_telefone: sharedState.celular,
@@ -20,19 +20,24 @@ const salvarProfissional = async ( sharedState ) => {
       nr_cep: sharedState.cep,
       nm_rua: sharedState.rua,
       nm_bairro: sharedState.bairro,
-      nm_estado: 'saopaulo',
+      sg_uf: 'SP',
+      nr_cpf: '12312311',
+      nr_rg: '1231231',
+      sg_genero : 'M',
       nm_cidade: sharedState.cidade,
-    }}
-    catch(e){
-      console.log('erro: ' , e.message)
-
     }
+    const response = await axios.post('http://10.0.0.173:8000/salvarresponsavel', responsavel);
+    console.log("deu certo");
+    console.log('response: ', response);
+    return response;
+  } catch (e) {
+    console.error('error: ', e.message);
   }
+}
 
 export default function CadastroResponsavel({ navigation }) {
-  const { sharedState, setSharedState } = useStateContext();
 
-  const [nome, setNome] = useState('');
+
 
   const [formData, setFormData] = useState({
     nome: '',
@@ -41,17 +46,18 @@ export default function CadastroResponsavel({ navigation }) {
     celular: '',
     dataNascimento: '',
     cep: '',
-    cidade:'',
+    cidade: '',
     bairro: '',
     rua: '',
     numeroCasa: ''
   })
 
-  const handleSubmit = () => {
-    setSharedState({ ...sharedState, ...formData })
-    /* salvarProfissional(nome) */
-    navigation.navigate('LoginResponsavel')
-  }
+  const handleSubmit = async() => {
+    try {
+      const res = await salvarResponsavel(formData);
+      navigation.navigate('Responsavel')
+    } catch (e) { console.error('salvar erro: ', e.message) }
+  };
 
   const handleChange = (key, value) => {
     setFormData(prevState => ({
@@ -70,7 +76,7 @@ export default function CadastroResponsavel({ navigation }) {
         <Text style={styles.title}>Dados Pessoais</Text>
         <InputP placeholder="Nome completo" onChangeText={(value) => handleChange('nome', value)} value={formData.nome} />
         <InputP placeholder="Email" onChangeText={(value) => handleChange('email', value)} value={formData.email} />
-        <InputP placeholder="Senha" onChangeText={(value) => handleChange('senha', value)} value={formData.senha}/>
+        <InputP placeholder="Senha" onChangeText={(value) => handleChange('senha', value)} value={formData.senha} />
         <InputP placeholder="Confirmar Senha" />
         <InputP placeholder="Celular" onChangeText={(value) => handleChange('celular', value)} value={formData.celular} />
         <InputP placeholder="DD/MM/AA" onChangeText={(value) => handleChange('dataNascimento', value)} value={formData.dataNascimento} />

@@ -5,10 +5,18 @@ const StateContext = createContext();
 
 export const ProfissionalStateProvider = ({ children }) => {
     const [sharedState, setSharedState] = useState({});
+    
+    const [userLoginState, setUserLoginState] = useState({
+        logado: false,
+        nome: '',
+        tipo: '',
+        access_token: ''
+    });
+    
 
     return (
 
-        <StateContext.Provider value={{ sharedState, setSharedState }}>
+        <StateContext.Provider value={{ sharedState, setSharedState, userLoginState, setUserLoginState }}>
             {children}
         </StateContext.Provider>
     );

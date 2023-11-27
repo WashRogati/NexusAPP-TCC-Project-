@@ -19,18 +19,19 @@ const salvarProfissional = async (sharedState) => {
       nr_cep: sharedState.cep,
       nm_rua: sharedState.rua,
       nm_bairro: sharedState.bairro,
-      nm_estado: 'saopaulo',
+      sg_uf: 'SP',
       nm_cidade: sharedState.cidade,
 
       nr_cpf: sharedState.cpf,
       nr_rg: sharedState.rg,
-      id_genero: sharedState.genero,
+      sg_genero: 'M',
       nr_registro_profissional: sharedState.registro,
       nm_formacao_academica: sharedState.formacao,
       nm_instituicao_ensino: sharedState.faculdade,
       dt_conclusao: sharedState.conclusao,
       ds_experiencia: sharedState.descricao
     };
+    console.log('profissional: ', profissional)
     const response = await axios.post('http://10.0.0.173:8000/salvarprofissional', profissional);
     console.log("deu certo");
     console.log('response: ', response);

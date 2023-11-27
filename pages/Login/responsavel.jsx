@@ -1,9 +1,48 @@
-import React from 'react';
+import React , { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Footer } from '../../components/footer';
+import { useStateContext } from '../../context/ProfissionalContext';
+import axios from 'axios';
 
 export default function LoginResponsavel( {navigation} ) {
+  const { userLoginState, setUserLoginState } = useStateContext();
+
+  const [formData, setFormData] = useState({
+    email: '',
+    senha: ''
+  })
+
+
+
+  const handleChange = (key, value) => {
+    setFormData(prevState => ({
+      ...prevState,
+      [key]: value
+    }))
+  }
+
+
+  const handleSubmit = () => {
+    logar(formData);
+  }
+
+  const logar = async (credenciais) => {
+    try {
+      const response = await axios.post('http://10.0.0.173:8000/loginResponsavel', credenciais);
+      console.log('response status: ', response.status);
+      console.log('response: ', response.data);
+      if(response.status == 200){
+      setUserLoginState({ logado: true, access_token: response.data.access_token  , tipo: response.data.type});
+      navigation.navigate('Menu');
+      }
+    }
+    catch (e) {
+      console.error('error: ', e.message);
+    }
+  }
+
+
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity style={styles.backButton}>
@@ -13,15 +52,15 @@ export default function LoginResponsavel( {navigation} ) {
 
       <TextInput
         style={styles.input}
-        placeholder="Email"
+        placeholder="Email" onChangeText={(value) => handleChange('email', value)} value={formData.email}
       />
 
       <TextInput
         style={styles.input}
-        placeholder="Senha"
+        placeholder="Senha" onChangeText={(value) => handleChange('senha', value)} value={formData.senha}
       />
 
-      <TouchableOpacity style={styles.loginButton}  onPress = {() => navigation.navigate('Responsavel')}>
+      <TouchableOpacity style={styles.loginButton}  onPress = {handleSubmit}>
         <Text style={styles.loginButtonText}>Entrar</Text>
       </TouchableOpacity>
 

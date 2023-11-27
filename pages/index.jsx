@@ -1,8 +1,24 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { Footer } from '../components/footer';
+import { useStateContext } from '../context/ProfissionalContext';
 
-const Inicio = ( { navigation }) => {
+
+
+const Inicio = ({ navigation }) => {
+  const { userLoginState, setUserLoginState } = useStateContext();
+
+  const verificaLogado = () => {
+    if (userLoginState.logado) {
+      console.log('Usuário Logado!');
+    }
+    else {
+      console.log('Usuário Deslogado!');
+    }
+  }
+
+  verificaLogado();
+
   return (
     <View style={styles.container}>
       <Image
@@ -11,10 +27,10 @@ const Inicio = ( { navigation }) => {
       />
       <Text style={styles.welcomeText}>BEM VINDO</Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Profissional')}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Profissional')}>
           <Text style={styles.buttonText}>Profissional</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={ () => navigation.navigate('Responsavel')}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Responsavel')}>
           <Text style={styles.buttonText}>Responsável</Text>
         </TouchableOpacity>
       </View>

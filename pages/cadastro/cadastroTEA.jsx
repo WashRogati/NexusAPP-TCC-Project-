@@ -1,9 +1,41 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, KeyboardAvoidingView, Platform, ScrollView, Button, TextInput} from 'react-native';
+import { View, Text, StyleSheet, KeyboardAvoidingView, Platform, ScrollView, Button, TextInput } from 'react-native';
 import { Footer } from '../../components/footer';
 import { InputP } from '../../components/input';
+import { useStateContext } from '../../context/ProfissionalContext';
+import axios from 'axios';
 
-export default function CadastroTEA( { navigation } ) {
+export default function CadastroTEA({ navigation }) {
+
+  const { userLoginState, setUserLoginState } = useStateContext();
+
+  const salvarPortador = async (portadorData) => {
+    try {
+      const portadorData = {
+        nm_portador: 'Joao',
+        dt_nascimento : '2020-02-20',
+        nm_escola : 'Escola Teste',
+        hr_escola : '10:00', 
+        ds_medicacoes : 'Medicações teste',
+        ds_diagnostico : 'Diagnostico teste',
+        ds_historico : 'Historico teste'
+      }
+      const response = await axios.post('http://10.0.0.173:8000/salvarPortador', portadorData, {
+        headers: {
+          access_token: userLoginState.access_token
+        }
+      });
+      console.log('response status: ', response.status);
+      console.log('response: ', response.data);
+      if (response.status == 200) {
+        navigation.navigate('Menu');
+      }
+    }
+    catch (e) {
+      console.error('error: ', e.message);
+    }
+  }
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
@@ -20,13 +52,13 @@ export default function CadastroTEA( { navigation } ) {
         <InputP placeholder="Grau" />
         <View style={styles.checkboxContainer}>
           <View
-          style={styles.checkbox}
+            style={styles.checkbox}
           />
           <Text style={styles.checkboxText}>Aceitar termos e condições</Text>
         </View>
-        <Button title="CADASTRAR" style={styles.button}  onPress = {() => navigation.navigate('Menu')}></Button>
+        <Button title="CADASTRAR" style={styles.button} onPress={salvarPortador}></Button>
       </ScrollView>
-      <Footer/>
+      <Footer />
     </KeyboardAvoidingView>
   );
 }

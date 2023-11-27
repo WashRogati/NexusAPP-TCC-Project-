@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image, Animated, 
 import Carousel from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Card, Button } from 'react-native-paper';
+import { useStateContext } from '../context/ProfissionalContext';
 
 const data = [
     { id: 1, image: 'https://picsum.photos/200/200?random=1' },
@@ -11,10 +12,21 @@ const data = [
 ];
 
 const Menu = ({ navigation }) => {
+
+
+
+    const { userLoginState, setUserLoginState } = useStateContext();
+
     const [isMenuOpen, setMenuOpen] = useState(false);
     const [isOverlayVisible, setOverlayVisible] = useState(false);
     const menuAnimation = new Animated.Value(0);
     const overlayAnimation = new Animated.Value(0);
+
+    const sair = () => {
+        setUserLoginState({ logado: false });
+        navigation.navigate('Inicio')
+
+    }
 
     const toggleMenu = () => {
         if (isMenuOpen) {
@@ -125,12 +137,21 @@ const Menu = ({ navigation }) => {
                                     </Text>                     </Button>
                             </View>
                             <View style={styles.buttonRow}>
-                                <Button mode="contained" style={styles.button} onPress={() => navigation.navigate('CadastroTEA')}>
+                                {userLoginState.tipo == 'responsavel' && (<Button mode="contained" style={styles.button} onPress={() => navigation.navigate('CadastroTEA')}>
                                     <Text style={styles.texto}>Cadastrar TEA
                                     </Text>
-                                </Button>
+                                </Button>)}
                                 <Button mode="contained" style={styles.button} onPress={() => navigation.navigate('ListaExercicios')}>
                                     <Text style={styles.texto}>Exercícios
+                                    </Text>                         </Button>
+                            </View>
+                            <View style={styles.buttonRow}>
+                                <Button mode="contained" style={styles.button} onPress={() => navigation.navigate('emoções')}>
+                                    <Text style={styles.texto}> Emoções
+                                    </Text>
+                                </Button>
+                                <Button mode="contained" style={styles.button} onPress={sair}>
+                                    <Text style={styles.texto}>SAIR
                                     </Text>                         </Button>
                             </View>
                         </View>
