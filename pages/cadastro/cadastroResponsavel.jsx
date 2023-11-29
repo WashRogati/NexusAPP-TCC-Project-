@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, KeyboardAvoidingView, Platform, ScrollView, Button, TouchableOpacity } from 'react-native';
-import { Footer } from '../../components/footer';
 import { InputP } from '../../components/input';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import axios from 'axios';
@@ -26,7 +25,7 @@ const salvarResponsavel = async (sharedState) => {
       sg_genero : 'M',
       nm_cidade: sharedState.cidade,
     }
-    const response = await axios.post('http://10.0.0.173:8000/salvarresponsavel', responsavel);
+    const response = await axios.post('http://192.168.120.127:8000/salvarresponsavel', responsavel);
     console.log("deu certo");
     console.log('response: ', response);
     return response;
@@ -95,7 +94,6 @@ export default function CadastroResponsavel({ navigation }) {
           <Icon name="angle-right" size={40} color="white" />
         </TouchableOpacity>
       </ScrollView>
-      <Footer />
     </KeyboardAvoidingView>
   );
 }
@@ -104,7 +102,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 30,
+    alignItems: 'center'
   },
   title: {
     fontSize: 24,

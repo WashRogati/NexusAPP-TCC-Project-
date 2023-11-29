@@ -10,8 +10,8 @@ import { useStateContext } from '../../context/ProfissionalContext';
 
 const listarProfissionais = async () => {
   try {
-    const profissionais = await axios.get('http://10.0.0.173:8000/minharotaget',);
-
+    const profissionais = await axios.get('http://192.168.120.127:8000/minharotaget',);
+   
     console.log('profissionais: ', profissionais.data);
 
   } catch (error) {
@@ -85,17 +85,10 @@ export default function CadastroProfissional1({ navigation }) {
         <InputP placeholder="Bairro" onChangeText={(value) => handleChange('bairro', value)} value={formData.bairro} />
         <InputP placeholder="Rua" onChangeText={(value) => handleChange('rua', value)} value={formData.rua} />
         <InputP placeholder="Nº" onChangeText={(value) => handleChange('numeroCasa', value)} value={formData.numeroCasa} />
-        <View style={styles.checkboxContainer}>
-          <View
-            style={styles.checkbox}
-          />
-          <Text style={styles.checkboxText}>Aceitar termos e condições</Text>
-        </View>
         <TouchableOpacity style={styles.button} onPress={handleSubmit}>
           <Icon name="angle-right" size={40} color="white" />
         </TouchableOpacity>
       </ScrollView>
-      <Footer />
     </KeyboardAvoidingView>
   );
 }

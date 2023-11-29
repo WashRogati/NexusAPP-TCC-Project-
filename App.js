@@ -20,9 +20,9 @@ import AgendaP from './pages/agenda';
 import { ProfissionalStateProvider } from './context/ProfissionalContext';
 import { Configuracoes } from './pages/configuracoes';
 import PesquisarProfissional from './pages/pesquisarProfissional';
-
-
-
+import Planos from './pages/planos';
+import Emocoes from './pages/emocoes';
+import Exercicio from './pages/exercicio';
 
 
 
@@ -34,22 +34,23 @@ const App = () => {
     <ProfissionalStateProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="PesquisarProfissional" component={PesquisarProfissional} />
           <Stack.Screen name="Inicio" component={Inicio} />
           <Stack.Screen name="Profissional" component={LoginProfissional} />
           <Stack.Screen name="Responsavel" component={LoginResponsavel} />
-          <Stack.Screen name="CadastroResponsavel" component={CadastroReponsavel} />
+          <Stack.Screen name="Cadastro Responsavel" component={CadastroReponsavel} />
           <Stack.Screen name="PerfilProfissional" component={PerfilProfissional} />
           <Stack.Screen name="RedefinirSenha" component={RedefinirSenha} />
           <Stack.Screen name="NovaSenha" component={NovaSenha} />
-          <Stack.Screen name="Menu" component={Menu} />
-          <Stack.Screen name="ListaExercicios" component={ListaExercicios} />
-          <Stack.Screen name="CadastroProfissional1" component={CadastroProfissional1} />
-          <Stack.Screen name="CadastroProfissional2" component={CadastroProfissional2} />
+          <Stack.Screen name="Dados Pessoais" component={CadastroProfissional1} />
           <Stack.Screen name="CadastroProfissional3" component={CadastroProfissional3} />
-          <Stack.Screen name="CadastroTEA" component={CadastroTEA} />
+          <Stack.Screen name="Configuracões" component={Configuracoes} />
+          <Stack.Screen name="Pesquisar Profissionais" component={PesquisarProfissional} />
+          <Stack.Screen name="Planos" component={Planos} />
+          <Stack.Screen name="Menu" component={Menu} />
           <Stack.Screen name="Agenda" component={AgendaP} />
-          <Stack.Screen name="Configuracoes" component={Configuracoes} />
+          <Stack.Screen name="Dados Profissionais" component={CadastroProfissional2} />
+          <Stack.Screen name="Exercicio" component={Exercicio} />
+          <Stack.Screen name="ListaExercicios" component={ListaExercicios} />
         </Stack.Navigator>
       </NavigationContainer>
     </ProfissionalStateProvider>

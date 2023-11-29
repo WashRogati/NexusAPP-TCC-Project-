@@ -32,7 +32,7 @@ const salvarProfissional = async (sharedState) => {
       ds_experiencia: sharedState.descricao
     };
     console.log('profissional: ', profissional)
-    const response = await axios.post('http://10.0.0.173:8000/salvarprofissional', profissional);
+    const response = await axios.post('http://192.168.120.127:8000/salvarprofissional', profissional);
     console.log("deu certo");
     console.log('response: ', response);
   } catch (e) {

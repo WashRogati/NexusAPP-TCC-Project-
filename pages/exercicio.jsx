@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
-export default function App() {
+export default function Exercicio() {
   const [exerciseData, setExerciseData] = useState({
     title: 'Titulo do Exercício',
     description: 'Carregando descrição...',
@@ -18,14 +18,11 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Header</Text>
-      </View>
 
       <Text style={styles.title}>{exerciseData.title}</Text>
 
       <Image
-        source={require('./image/exercicio.jpeg')}
+        source={require('../image/exercicio.jpeg')}
         style={styles.image}
       />
 

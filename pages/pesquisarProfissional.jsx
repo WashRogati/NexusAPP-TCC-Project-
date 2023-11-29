@@ -28,7 +28,7 @@ export default function PesquisarProfissional({ navigation }) {
 
     const listarProfissionais = async () => {
         try {
-            const profissionais = await axios.get('http://10.0.0.173:8000/listarProfissionais',);
+            const profissionais = await axios.get('http://192.168.120.127:8000/listarProfissionais',);
 
             console.log('profissionais: ', profissionais.data.data);
 

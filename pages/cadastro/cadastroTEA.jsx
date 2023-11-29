@@ -28,7 +28,7 @@ export default function CadastroTEA({ navigation }) {
       console.log('response status: ', response.status);
       console.log('response: ', response.data);
       if (response.status == 200) {
-        navigation.navigate('Menu');
+        navigation.navigate('Menu');  
       }
     }
     catch (e) {
@@ -58,7 +58,6 @@ export default function CadastroTEA({ navigation }) {
         </View>
         <Button title="CADASTRAR" style={styles.button} onPress={salvarPortador}></Button>
       </ScrollView>
-      <Footer />
     </KeyboardAvoidingView>
   );
 }

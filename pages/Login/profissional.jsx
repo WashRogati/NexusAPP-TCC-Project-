@@ -34,7 +34,7 @@ export default function LoginProfissional({ navigation }) {
 
   const logar = async (credenciais) => {
     try {
-      const response = await axios.post('http://10.0.0.173:8000/loginProfissional', credenciais);
+      const response = await axios.post('http://192.168.120.127:8000/loginProfissional', credenciais);
       console.log('response status: ', response.status);
       console.log('response: ', response.data);
       if(response.status == 200){
@@ -68,7 +68,7 @@ export default function LoginProfissional({ navigation }) {
       </TouchableOpacity>
 
       <View style={styles.bottomLinks} >
-        <Text onPress={() => navigation.navigate('CadastroProfissional1')}>Não possui conta? Cadastre-se</Text>
+        <Text onPress={() => navigation.navigate('Dados Pessoais')}>Não possui conta? Cadastre-se</Text>
         <Text onPress={() => navigation.navigate('RedefinirSenha')} >Esqueceu a senha?</Text>
       </View>
       <Footer />

@@ -29,7 +29,7 @@ export default function LoginResponsavel( {navigation} ) {
 
   const logar = async (credenciais) => {
     try {
-      const response = await axios.post('http://10.0.0.173:8000/loginResponsavel', credenciais);
+      const response = await axios.post('http://192.168.120.127:8000/loginResponsavel', credenciais);
       console.log('response status: ', response.status);
       console.log('response: ', response.data);
       if(response.status == 200){
@@ -65,7 +65,7 @@ export default function LoginResponsavel( {navigation} ) {
       </TouchableOpacity>
 
       <View style={styles.bottomLinks}>
-      <Text onPress = {() => navigation.navigate('CadastroResponsavel')}>Não possui conta? Cadastre-se</Text>
+      <Text onPress = {() => navigation.navigate('Cadastro Responsavel')}>Não possui conta? Cadastre-se</Text>
         <Text onPress = {() => navigation.navigate('RedefinirSenha')} >Esqueceu a senha?</Text>
       </View>
       <Footer/>

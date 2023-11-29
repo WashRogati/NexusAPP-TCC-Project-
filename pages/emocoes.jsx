@@ -11,9 +11,7 @@ const data = [
     { id: 3, image: 'https://picsum.photos/200/200?random=3' },
 ];
 
-const Menu = ({ navigation }) => {
-
-
+const Emocoes = ({ navigation }) => {
 
     const { userLoginState, setUserLoginState } = useStateContext();
 
@@ -121,7 +119,6 @@ const Menu = ({ navigation }) => {
                         sliderWidth={300}
                         itemWidth={200}
                     /> */}
-                    <Image source={require('../image/atividades.jpg')} style={styles.carouselImage} />
                 </View>
 
                 <Card style={styles.card}>
@@ -129,18 +126,21 @@ const Menu = ({ navigation }) => {
                         <View style={styles.buttonContainer}>
                             <View style={styles.buttonRow}>
                                 <Button mode="contained" style={styles.button} onPress={() => navigation.navigate('Configurações')}>
-                                    <Text style={styles.texto}>Configurações
+                                <Image source={require('../image/atividades.jpg')} style={styles.carouselImage} />
+                                    
+                                    <Text style={styles.texto}>Felicidade
                                     </Text>
                                 </Button>
-                                <Button mode="contained" style={styles.button} onPress={() => navigation.navigate('Agenda')} >
-                                    <Text style={styles.texto}>Agenda</Text>
+                                <Button mode="contained" style={styles.button} onPress={() => navigation.navigate('Configurações')}>
+                                    <Text style={styles.texto}>Configurações
+                                    </Text>
                                 </Button>
                             </View>
                             <View style={styles.buttonRow}>
                                 <Button mode="contained" style={styles.button} onPress={() => navigation.navigate('ListaExercicios')}>
                                     <Text style={styles.texto}>Exercícios</Text>
                                 </Button>
-                                <Button mode="contained" style={styles.button} onPress={() => navigation.navigate('Emoções')}>
+                                <Button mode="contained" style={styles.button} onPress={() => navigation.navigate('emoções')}>
                                     <Text style={styles.texto}> Emoções
                                     </Text>
                                 </Button>
@@ -265,4 +265,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Menu;
+export default Emocoes;
