@@ -20,7 +20,7 @@ export default function CadastroTEA({ navigation }) {
         ds_diagnostico : 'Diagnostico teste',
         ds_historico : 'Historico teste'
       }
-      const response = await axios.post('http://10.0.0.173:8000/salvarPortador', portadorData, {
+      const response = await axios.post('http://192.168.43.213:8000/salvarPortador', portadorData, {
         headers: {
           access_token: userLoginState.access_token
         }

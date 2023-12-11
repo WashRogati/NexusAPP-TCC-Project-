@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image, Animated, Easing } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, StyleSheet, Image, Animated, Easing} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Card, Button } from 'react-native-paper';
@@ -121,13 +121,12 @@ const Emocoes = ({ navigation }) => {
                     /> */}
                 </View>
 
+
                 <Card style={styles.card}>
                     <Card.Content>
                         <View style={styles.buttonContainer}>
                             <View style={styles.buttonRow}>
                                 <Button mode="contained" style={styles.button} onPress={() => navigation.navigate('Configurações')}>
-                                <Image source={require('../image/atividades.jpg')} style={styles.carouselImage} />
-                                    
                                     <Text style={styles.texto}>Felicidade
                                     </Text>
                                 </Button>

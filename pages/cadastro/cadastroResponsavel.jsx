@@ -25,7 +25,7 @@ const salvarResponsavel = async (sharedState) => {
       sg_genero : 'M',
       nm_cidade: sharedState.cidade,
     }
-    const response = await axios.post('http://192.168.120.127:8000/salvarresponsavel', responsavel);
+    const response = await axios.post('http://localhost/salvarresponsavel', responsavel);
     console.log("deu certo");
     console.log('response: ', response);
     return response;

@@ -10,7 +10,7 @@ import { useStateContext } from '../../context/ProfissionalContext';
 
 const listarProfissionais = async () => {
   try {
-    const profissionais = await axios.get('http://192.168.120.127:8000/minharotaget',);
+    const profissionais = await axios.get('http://localhost:8000/minharotaget',);
    
     console.log('profissionais: ', profissionais.data);
 

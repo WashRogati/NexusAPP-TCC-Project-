@@ -43,6 +43,7 @@ const App = () => {
           <Stack.Screen name="NovaSenha" component={NovaSenha} />
           <Stack.Screen name="Dados Pessoais" component={CadastroProfissional1} />
           <Stack.Screen name="CadastroProfissional3" component={CadastroProfissional3} />
+          <Stack.Screen name="CadastroTEA" component={CadastroTEA} />
           <Stack.Screen name="Configuracões" component={Configuracoes} />
           <Stack.Screen name="Pesquisar Profissionais" component={PesquisarProfissional} />
           <Stack.Screen name="Planos" component={Planos} />
