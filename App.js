@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView, LogBox } from 'react-native';
+import React,{useState} from 'react';
+import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView, LogBox, Button } from 'react-native';
 import { Footer } from './components/footer';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -23,18 +23,20 @@ import PesquisarProfissional from './pages/pesquisarProfissional';
 import Planos from './pages/planos';
 import Emocoes from './pages/emocoes';
 import Exercicio from './pages/exercicio';
+import setModalVisible from './pages/emocoes'
 
 
 
 const Stack = createStackNavigator();
 LogBox.ignoreAllLogs();
 
+
 const App = () => {
   return (
     <ProfissionalStateProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="Emoções" component={Emocoes} />
+          <Stack.Screen name="Emoções" component={Emocoes}/>
           <Stack.Screen name="Inicio" component={Inicio} />
           <Stack.Screen name="Profissional" component={LoginProfissional} />
           <Stack.Screen name="Responsavel" component={LoginResponsavel} />
