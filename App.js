@@ -34,6 +34,7 @@ const App = () => {
     <ProfissionalStateProvider>
       <NavigationContainer>
         <Stack.Navigator>
+          <Stack.Screen name="Emoções" component={Emocoes} />
           <Stack.Screen name="Inicio" component={Inicio} />
           <Stack.Screen name="Profissional" component={LoginProfissional} />
           <Stack.Screen name="Responsavel" component={LoginResponsavel} />

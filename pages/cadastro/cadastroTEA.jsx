@@ -9,16 +9,24 @@ export default function CadastroTEA({ navigation }) {
 
   const { userLoginState, setUserLoginState } = useStateContext();
 
+  const [formData, setFormData] = useState({
+    nome: '',
+    dataNascimento: '',
+    escola: '',
+    hrescola: '',
+    grau: '',
+  })
+
   const salvarPortador = async (portadorData) => {
     try {
       const portadorData = {
-        nm_portador: 'Joao',
-        dt_nascimento : '2020-02-20',
-        nm_escola : 'Escola Teste',
-        hr_escola : '10:00', 
-        ds_medicacoes : 'Medicações teste',
-        ds_diagnostico : 'Diagnostico teste',
-        ds_historico : 'Historico teste'
+        nm_portador: formData.nome,
+        dt_nascimento : formData.dataNascimento,
+        nm_escola : formData.escola,
+        hr_escola : formData.hrescola, 
+        ds_medicacoes : ' ',
+        ds_diagnostico : '',
+        ds_historico : formData.grau
       }
       const response = await axios.post('http://192.168.43.213:8000/salvarPortador', portadorData, {
         headers: {
@@ -27,6 +35,7 @@ export default function CadastroTEA({ navigation }) {
       });
       console.log('response status: ', response.status);
       console.log('response: ', response.data);
+      console.log('dados: ', formData.data )
       if (response.status == 200) {
         navigation.navigate('Menu');  
       }
@@ -34,6 +43,13 @@ export default function CadastroTEA({ navigation }) {
     catch (e) {
       console.error('error: ', e.message);
     }
+  }
+
+  const handleChange = (key, value) => {
+    setFormData(prevState => ({
+      ...prevState,
+      [key]: value
+    }))
   }
 
   return (
@@ -44,12 +60,12 @@ export default function CadastroTEA({ navigation }) {
     >
       <ScrollView>
         <Text style={styles.title}>Cadastre-se</Text>
-        <InputP placeholder="Nome completo" />
-        <InputP placeholder="DD/MM/AA" />
-        <InputP placeholder="CPF" />
-        <InputP placeholder="Nome da Escola" />
-        <InputP placeholder="Horario da terapia" />
-        <InputP placeholder="Grau" />
+        <InputP placeholder="Nome completo" onChangeText={(value) => handleChange('nome', value)} value={formData.nome} />
+        <InputP placeholder="Nascimento: Ano-Mês-Dia" onChangeText={(value) => handleChange('dataNascimento', value)} value={formData.dataNascimento} />
+        <InputP placeholder="Horario Escola" onChangeText={(value) => handleChange('hrescola', value)} value={formData.hrescola}/>
+        <InputP placeholder="Nome da Escola" onChangeText={(value) => handleChange('escola', value)} value={formData.escola} />
+        <InputP placeholder="Horario da terapia" onChangeText={(value) => handleChange('hrterapia', value)} value={formData.hrterapia}/>
+        <InputP placeholder="Grau" onChangeText={(value) => handleChange('grau', value)} value={formData.grau} />
         <View style={styles.checkboxContainer}>
           <View
             style={styles.checkbox}
